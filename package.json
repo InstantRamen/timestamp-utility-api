@@ -1,0 +1,14 @@
+{
+  "name": "timestamp-utility",
+  "version": "0.0.1",
+  "description": "Give it a timestamp or natural-language date and it returns both.",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index"
+  },
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
