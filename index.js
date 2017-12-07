@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 3000;
 
 const dateFromDate = date => {
   console.log('checking date...', date);
-  newDate = new Date(date);
+  let newDate = new Date(date);
   if (!isNaN(newDate) && newDate instanceof Date) {
     return newDate;
   } else {
