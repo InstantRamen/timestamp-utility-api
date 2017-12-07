@@ -15,22 +15,27 @@ const dateFromDate = date => {
 const dateFromTimestamp = date => dateFromDate(parseInt(date));
 
 const getDateObject = date => {
-  return dateFromDate(date) || dateFromTimestamp(date);
+  let newDate = dateFromDate(date) || dateFromTimestamp(date);
+  if (newDate) {
+    return {
+      unix: newDate.getTime(),
+      natural: newDate.toDateString()
+    };
+  } else {
+    return {
+      unix: null,
+      natural: null
+    }
+  }
 };
 app.get('/', (req, res) => {
-  res.send('to get started, add timestamp or date to url');
+  res.send('URL FORMAT: [url]/[date or unix timestamp]');
 });
 
 app.get('/:date', (req, res) => {
   let date = getDateObject(req.params.date);
-  if (date) {
-    res.send({
-      unix: date.getTime(),
-      natural: date.toDateString()
-    });
-  }  else {
-    res.send({error: `not valid date | ${date}`})
-  }
+  
+  res.send(date);
 });
 
 app.listen(PORT, () => console.log(`listening on port ${PORT}`));
